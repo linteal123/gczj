@@ -1,1 +1,887 @@
-<html><head><style>p{margin-top:0pt;margin-bottom:1pt;}p.a{text-align:justified;}</style></head><body><div style="width:595.0pt;margin-bottom:72.0pt;margin-top:72.0pt;margin-left:90.0pt;margin-right:90.0pt;"><p>&lt;!DOCTYPE html&gt;</p><p>&lt;html lang=&quot;zh-CN&quot;&gt;</p><p>&lt;head&gt;</p><p>    &lt;meta charset=&quot;UTF-8&quot;&gt;</p><p>    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;</p><p>    &lt;title&gt;&#24191;&#19996;&#30465;&#24314;&#35774;&#24037;&#31243;&#36896;&#20215;&#21672;&#35810;&#25910;&#36153;&#35745;&#31639;&#22120;&lt;/title&gt;</p><p>    &lt;style&gt;</p><p>        * {</p><p>            margin: 0;</p><p>            padding: 0;</p><p>            box-sizing: border-box;</p><p>        }</p><p>        </p><p>        body {</p><p>            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;</p><p>            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p><p>            min-height: 100vh;</p><p>            padding: 20px;</p><p>        }</p><p>        </p><p>        .container {</p><p>            max-width: 480px;</p><p>            margin: 0 auto;</p><p>            background: white;</p><p>            border-radius: 20px;</p><p>            box-shadow: 0 20px 60px rgba(0,0,0,0.3);</p><p>            overflow: hidden;</p><p>        }</p><p>        </p><p>        .header {</p><p>            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);</p><p>            color: white;</p><p>            padding: 30px 20px;</p><p>            text-align: center;</p><p>        }</p><p>        </p><p>        .header h1 {</p><p>            font-size: 1.3rem;</p><p>            margin-bottom: 8px;</p><p>            font-weight: 600;</p><p>        }</p><p>        </p><p>        .header p {</p><p>            font-size: 0.85rem;</p><p>            opacity: 0.9;</p><p>        }</p><p>        </p><p>        .content {</p><p>            padding: 20px;</p><p>        }</p><p>        </p><p>        .form-group {</p><p>            margin-bottom: 20px;</p><p>        }</p><p>        </p><p>        label {</p><p>            display: block;</p><p>            margin-bottom: 8px;</p><p>            color: #333;</p><p>            font-weight: 500;</p><p>            font-size: 0.95rem;</p><p>        }</p><p>        </p><p>        select, input {</p><p>            width: 100%;</p><p>            padding: 14px 16px;</p><p>            border: 2px solid #e0e0e0;</p><p>            border-radius: 12px;</p><p>            font-size: 1rem;</p><p>            transition: all 0.3s;</p><p>            background: #fafafa;</p><p>        }</p><p>        </p><p>        select:focus, input:focus {</p><p>            outline: none;</p><p>            border-color: #667eea;</p><p>            background: white;</p><p>        }</p><p>        </p><p>        .input-group {</p><p>            display: flex;</p><p>            gap: 10px;</p><p>            align-items: center;</p><p>        }</p><p>        </p><p>        .input-group input {</p><p>            flex: 1;</p><p>        }</p><p>        </p><p>        .unit {</p><p>            color: #666;</p><p>            font-size: 0.9rem;</p><p>            white-space: nowrap;</p><p>        }</p><p>        </p><p>        .calculate-btn {</p><p>            width: 100%;</p><p>            padding: 16px;</p><p>            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p><p>            color: white;</p><p>            border: none;</p><p>            border-radius: 12px;</p><p>            font-size: 1.1rem;</p><p>            font-weight: 600;</p><p>            cursor: pointer;</p><p>            transition: transform 0.2s, box-shadow 0.2s;</p><p>            margin-top: 10px;</p><p>        }</p><p>        </p><p>        .calculate-btn:active {</p><p>            transform: scale(0.98);</p><p>        }</p><p>        </p><p>        .result-card {</p><p>            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);</p><p>            border-radius: 16px;</p><p>            padding: 24px;</p><p>            margin-top: 24px;</p><p>            border-left: 4px solid #667eea;</p><p>            display: none;</p><p>        }</p><p>        </p><p>        .result-card.show {</p><p>            display: block;</p><p>            animation: slideUp 0.4s ease;</p><p>        }</p><p>        </p><p>        @keyframes slideUp {</p><p>            from {</p><p>                opacity: 0;</p><p>                transform: translateY(20px);</p><p>            }</p><p>            to {</p><p>                opacity: 1;</p><p>                transform: translateY(0);</p><p>            }</p><p>        }</p><p>        </p><p>        .result-title {</p><p>            font-size: 0.9rem;</p><p>            color: #666;</p><p>            margin-bottom: 8px;</p><p>        }</p><p>        </p><p>        .result-amount {</p><p>            font-size: 2.2rem;</p><p>            color: #1e3c72;</p><p>            font-weight: 700;</p><p>            margin-bottom: 16px;</p><p>        }</p><p>        </p><p>        .result-detail {</p><p>            background: white;</p><p>            border-radius: 12px;</p><p>            padding: 16px;</p><p>            font-size: 0.85rem;</p><p>            color: #555;</p><p>            line-height: 1.6;</p><p>        }</p><p>        </p><p>        .result-detail p {</p><p>            margin-bottom: 8px;</p><p>        }</p><p>        </p><p>        .result-detail strong {</p><p>            color: #333;</p><p>        }</p><p>        </p><p>        .note {</p><p>            margin-top: 20px;</p><p>            padding: 16px;</p><p>            background: #fff8e1;</p><p>            border-radius: 12px;</p><p>            font-size: 0.8rem;</p><p>            color: #666;</p><p>            line-height: 1.6;</p><p>        }</p><p>        </p><p>        .note-title {</p><p>            font-weight: 600;</p><p>            color: #f57c00;</p><p>            margin-bottom: 8px;</p><p>        }</p><p>        </p><p>        /* &#29305;&#27530;&#36755;&#20837;&#21306;&#22495;&#26679;&#24335; */</p><p>        .special-inputs {</p><p>            display: none;</p><p>            background: #f8f9fa;</p><p>            padding: 16px;</p><p>            border-radius: 12px;</p><p>            margin-top: 12px;</p><p>        }</p><p>        </p><p>        .special-inputs.show {</p><p>            display: block;</p><p>        }</p><p>        </p><p>        .tier-info {</p><p>            background: #e3f2fd;</p><p>            padding: 12px;</p><p>            border-radius: 8px;</p><p>            margin-bottom: 12px;</p><p>            font-size: 0.85rem;</p><p>            color: #1976d2;</p><p>        }</p><p>        </p><p>        .checkbox-group {</p><p>            display: flex;</p><p>            align-items: center;</p><p>            gap: 8px;</p><p>            margin-top: 12px;</p><p>        }</p><p>        </p><p>        .checkbox-group input[type=&quot;checkbox&quot;] {</p><p>            width: auto;</p><p>        }</p><p>        </p><p>        /* &#21709;&#24212;&#24335;&#20248;&#21270; */</p><p>        @media (max-width: 480px) {</p><p>            body {</p><p>                padding: 10px;</p><p>            }</p><p>            </p><p>            .header h1 {</p><p>                font-size: 1.1rem;</p><p>            }</p><p>        }</p><p>        </p><p>        .tabs {</p><p>            display: flex;</p><p>            gap: 8px;</p><p>            margin-bottom: 20px;</p><p>            overflow-x: auto;</p><p>            padding-bottom: 4px;</p><p>        }</p><p>        </p><p>        .tab {</p><p>            padding: 10px 16px;</p><p>            background: #f0f0f0;</p><p>            border-radius: 20px;</p><p>            font-size: 0.85rem;</p><p>            cursor: pointer;</p><p>            white-space: nowrap;</p><p>            transition: all 0.3s;</p><p>            border: none;</p><p>        }</p><p>        </p><p>        .tab.active {</p><p>            background: #667eea;</p><p>            color: white;</p><p>        }</p><p>        </p><p>        .professionals-group {</p><p>            display: grid;</p><p>            grid-template-columns: 1fr 1fr;</p><p>            gap: 12px;</p><p>        }</p><p>        </p><p>        .prof-item {</p><p>            background: #f8f9fa;</p><p>            padding: 12px;</p><p>            border-radius: 10px;</p><p>        }</p><p>        </p><p>        .prof-item label {</p><p>            font-size: 0.8rem;</p><p>            margin-bottom: 6px;</p><p>        }</p><p>        </p><p>        .prof-item input {</p><p>            padding: 10px;</p><p>            font-size: 0.9rem;</p><p>        }</p><p>    &lt;/style&gt;</p><p>&lt;/head&gt;</p><p>&lt;body&gt;</p><p>    &lt;div class=&quot;container&quot;&gt;</p><p>        &lt;div class=&quot;header&quot;&gt;</p><p>            &lt;h1&gt;&#24191;&#19996;&#30465;&#24314;&#35774;&#24037;&#31243;&#36896;&#20215;&#21672;&#35810;&#25910;&#36153;&#35745;&#31639;&#22120;&lt;/h1&gt;</p><p>            &lt;p&gt;&#20381;&#25454;&#31908;&#20215;&#20989;&#12308;2011&#12309;742&#21495;&#25991;&#20214;&lt;/p&gt;</p><p>        &lt;/div&gt;</p><p>        </p><p>        &lt;div class=&quot;content&quot;&gt;</p><p>            &lt;!-- &#24555;&#36895;&#36873;&#25321;&#26631;&#31614; --&gt;</p><p>            &lt;div class=&quot;tabs&quot;&gt;</p><p>                &lt;button class=&quot;tab active&quot; onclick=&quot;quickSelect('estimate')&quot;&gt;&#25237;&#36164;&#20272;&#31639;&lt;/button&gt;</p><p>                &lt;button class=&quot;tab&quot; onclick=&quot;quickSelect('budget')&quot;&gt;&#24037;&#31243;&#27010;&#31639;&lt;/button&gt;</p><p>                &lt;button class=&quot;tab&quot; onclick=&quot;quickSelect('settlement')&quot;&gt;&#24037;&#31243;&#32467;&#31639;&lt;/button&gt;</p><p>                &lt;button class=&quot;tab&quot; onclick=&quot;quickSelect('audit')&quot;&gt;&#32467;&#31639;&#23457;&#26680;&lt;/button&gt;</p><p>                &lt;button class=&quot;tab&quot; onclick=&quot;quickSelect('control')&quot;&gt;&#20840;&#36807;&#31243;&lt;/button&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;div class=&quot;form-group&quot;&gt;</p><p>                &lt;label&gt;&#21672;&#35810;&#39033;&#30446;&#21517;&#31216;&lt;/label&gt;</p><p>                &lt;select id=&quot;projectType&quot; onchange=&quot;handleProjectChange()&quot;&gt;</p><p>                    &lt;option value=&quot;1&quot;&gt;1. &#25237;&#36164;&#20272;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;&lt;/option&gt;</p><p>                    &lt;option value=&quot;2&quot;&gt;2. &#24037;&#31243;&#27010;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;&lt;/option&gt;</p><p>                    &lt;option value=&quot;3-1&quot;&gt;3.1 &#21333;&#29420;&#32534;&#21046;&#25110;&#23457;&#26680;&#24037;&#31243;&#37327;&#28165;&#21333;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;3-2&quot;&gt;3.2 &#21333;&#29420;&#32534;&#21046;&#25110;&#23457;&#26680;&#39044;&#31639;&#36896;&#20215;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;3-3&quot;&gt;3.3 &#32534;&#21046;&#25110;&#23457;&#26680;&#39044;&#31639;&#36896;&#20215;&#65288;&#23450;&#39069;&#35745;&#20215;&#27861;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;4&quot;&gt;4. &#24037;&#31243;&#32467;&#31639;&#30340;&#32534;&#21046;&lt;/option&gt;</p><p>                    &lt;option value=&quot;5-1&quot;&gt;5.1 &#24037;&#31243;&#32467;&#31639;&#23457;&#26680;&#65288;&#22522;&#26412;&#25910;&#36153;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;5-2&quot;&gt;5.2 &#24037;&#31243;&#32467;&#31639;&#23457;&#26680;&#65288;&#25928;&#30410;&#25910;&#36153;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;6&quot;&gt;6. &#26045;&#24037;&#38454;&#27573;&#20840;&#36807;&#31243;&#36896;&#20215;&#25511;&#21046;&lt;/option&gt;</p><p>                    &lt;option value=&quot;7-1&quot;&gt;7.1 &#24037;&#31243;&#36896;&#20215;&#32416;&#32439;&#37492;&#35777;&#65288;&#37492;&#35777;&#21518;&#26631;&#30340;&#39069;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;7-2&quot;&gt;7.2 &#24037;&#31243;&#36896;&#20215;&#32416;&#32439;&#37492;&#35777;&#65288;&#20105;&#35758;&#24046;&#39069;&#65289;&lt;/option&gt;</p><p>                    &lt;option value=&quot;8&quot;&gt;8. &#38050;&#31563;&#21450;&#39044;&#22475;&#20214;&#35745;&#31639;&lt;/option&gt;</p><p>                    &lt;option value=&quot;9&quot;&gt;9. &#24037;&#31243;&#36896;&#20215;&#21672;&#35810;&#24037;&#26085;&#25910;&#36153;&#26631;&#20934;&lt;/option&gt;</p><p>                &lt;/select&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;!-- &#26222;&#36890;&#25910;&#36153;&#22522;&#25968;&#36755;&#20837; --&gt;</p><p>            &lt;div class=&quot;form-group&quot; id=&quot;baseAmountGroup&quot;&gt;</p><p>                &lt;label&gt;&#25910;&#36153;&#22522;&#25968;&lt;/label&gt;</p><p>                &lt;div class=&quot;input-group&quot;&gt;</p><p>                    &lt;input type=&quot;number&quot; id=&quot;baseAmount&quot; placeholder=&quot;&#35831;&#36755;&#20837;&#37329;&#39069;&quot; step=&quot;0.01&quot;&gt;</p><p>                    &lt;span class=&quot;unit&quot; id=&quot;baseUnit&quot;&gt;&#19975;&#20803;&lt;/span&gt;</p><p>                &lt;/div&gt;</p><p>                &lt;div class=&quot;tier-info&quot; id=&quot;tierInfo&quot;&gt;&lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;!-- &#32467;&#31639;&#23457;&#26680;&#29305;&#27530;&#36755;&#20837; --&gt;</p><p>            &lt;div class=&quot;special-inputs&quot; id=&quot;auditInputs&quot;&gt;</p><p>                &lt;div class=&quot;form-group&quot;&gt;</p><p>                    &lt;label&gt;&#36865;&#23457;&#32467;&#31639;&#20215;&lt;/label&gt;</p><p>                    &lt;div class=&quot;input-group&quot;&gt;</p><p>                        &lt;input type=&quot;number&quot; id=&quot;auditAmount&quot; placeholder=&quot;&#35831;&#36755;&#20837;&#36865;&#23457;&#37329;&#39069;&quot; step=&quot;0.01&quot;&gt;</p><p>                        &lt;span class=&quot;unit&quot;&gt;&#19975;&#20803;&lt;/span&gt;</p><p>                    &lt;/div&gt;</p><p>                &lt;/div&gt;</p><p>                &lt;div class=&quot;form-group&quot;&gt;</p><p>                    &lt;label&gt;&#26680;&#20943;&#39069;&#65288;&#32477;&#23545;&#20540;&#65289;&lt;/label&gt;</p><p>                    &lt;div class=&quot;input-group&quot;&gt;</p><p>                        &lt;input type=&quot;number&quot; id=&quot;reduceAmount&quot; placeholder=&quot;&#35831;&#36755;&#20837;&#26680;&#20943;&#37329;&#39069;&quot; step=&quot;0.01&quot;&gt;</p><p>                        &lt;span class=&quot;unit&quot;&gt;&#19975;&#20803;&lt;/span&gt;</p><p>                    &lt;/div&gt;</p><p>                &lt;/div&gt;</p><p>                &lt;div class=&quot;form-group&quot;&gt;</p><p>                    &lt;label&gt;&#26680;&#22686;&#39069;&#65288;&#32477;&#23545;&#20540;&#65292;&#22914;&#26377;&#65289;&lt;/label&gt;</p><p>                    &lt;div class=&quot;input-group&quot;&gt;</p><p>                        &lt;input type=&quot;number&quot; id=&quot;increaseAmount&quot; placeholder=&quot;&#35831;&#36755;&#20837;&#26680;&#22686;&#37329;&#39069;&quot; step=&quot;0.01&quot; value=&quot;0&quot;&gt;</p><p>                        &lt;span class=&quot;unit&quot;&gt;&#19975;&#20803;&lt;/span&gt;</p><p>                    &lt;/div&gt;</p><p>                &lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;!-- &#38050;&#31563;&#35745;&#31639;&#29305;&#27530;&#36755;&#20837; --&gt;</p><p>            &lt;div class=&quot;special-inputs&quot; id=&quot;steelInputs&quot;&gt;</p><p>                &lt;div class=&quot;form-group&quot;&gt;</p><p>                    &lt;label&gt;&#38050;&#31563;&#20351;&#29992;&#37327;&lt;/label&gt;</p><p>                    &lt;div class=&quot;input-group&quot;&gt;</p><p>                        &lt;input type=&quot;number&quot; id=&quot;steelAmount&quot; placeholder=&quot;&#35831;&#36755;&#20837;&#38050;&#31563;&#21544;&#25968;&quot; step=&quot;0.01&quot;&gt;</p><p>                        &lt;span class=&quot;unit&quot;&gt;&#21544;&lt;/span&gt;</p><p>                    &lt;/div&gt;</p><p>                &lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;!-- &#24037;&#26085;&#25910;&#36153;&#29305;&#27530;&#36755;&#20837; --&gt;</p><p>            &lt;div class=&quot;special-inputs&quot; id=&quot;manDayInputs&quot;&gt;</p><p>                &lt;div class=&quot;form-group&quot;&gt;</p><p>                    &lt;label&gt;&#19987;&#19994;&#20154;&#21592;&#37197;&#32622;&lt;/label&gt;</p><p>                    &lt;div class=&quot;professionals-group&quot;&gt;</p><p>                        &lt;div class=&quot;prof-item&quot;&gt;</p><p>                            &lt;label&gt;&#39640;&#32423;&#24037;&#31243;&#24072;&#27880;&#20876;&#36896;&#20215;&#24072;&#65288;190&#20803;/&#23567;&#26102;&#65289;&lt;/label&gt;</p><p>                            &lt;input type=&quot;number&quot; id=&quot;seniorHours&quot; placeholder=&quot;&#23567;&#26102;&#25968;&quot; step=&quot;0.5&quot; value=&quot;0&quot;&gt;</p><p>                        &lt;/div&gt;</p><p>                        &lt;div class=&quot;prof-item&quot;&gt;</p><p>                            &lt;label&gt;&#27880;&#20876;&#36896;&#20215;&#24072;/&#39640;&#32423;&#32844;&#31216;&#65288;150&#20803;/&#23567;&#26102;&#65289;&lt;/label&gt;</p><p>                            &lt;input type=&quot;number&quot; id=&quot;certifiedHours&quot; placeholder=&quot;&#23567;&#26102;&#25968;&quot; step=&quot;0.5&quot; value=&quot;0&quot;&gt;</p><p>                        &lt;/div&gt;</p><p>                        &lt;div class=&quot;prof-item&quot;&gt;</p><p>                            &lt;label&gt;&#20013;&#32423;&#36164;&#26684;&#19987;&#19994;&#20154;&#21592;&#65288;100&#20803;/&#23567;&#26102;&#65289;&lt;/label&gt;</p><p>                            &lt;input type=&quot;number&quot; id=&quot;intermediateHours&quot; placeholder=&quot;&#23567;&#26102;&#25968;&quot; step=&quot;0.5&quot; value=&quot;0&quot;&gt;</p><p>                        &lt;/div&gt;</p><p>                        &lt;div class=&quot;prof-item&quot;&gt;</p><p>                            &lt;label&gt;&#21021;&#32423;&#36164;&#26684;&#19987;&#19994;&#20154;&#21592;&#65288;60&#20803;/&#23567;&#26102;&#65289;&lt;/label&gt;</p><p>                            &lt;input type=&quot;number&quot; id=&quot;juniorHours&quot; placeholder=&quot;&#23567;&#26102;&#25968;&quot; step=&quot;0.5&quot; value=&quot;0&quot;&gt;</p><p>                        &lt;/div&gt;</p><p>                    &lt;/div&gt;</p><p>                &lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;!-- &#32416;&#32439;&#37492;&#35777;&#29305;&#27530;&#36873;&#39033; --&gt;</p><p>            &lt;div class=&quot;special-inputs&quot; id=&quot;disputeInputs&quot;&gt;</p><p>                &lt;div class=&quot;checkbox-group&quot;&gt;</p><p>                    &lt;input type=&quot;checkbox&quot; id=&quot;bothParties&quot; onchange=&quot;updateDisputeRate()&quot;&gt;</p><p>                    &lt;label for=&quot;bothParties&quot; style=&quot;margin: 0;&quot;&gt;&#21452;&#26041;&#22343;&#26377;&#36896;&#20215;&#65288;&#20105;&#35758;&#24046;&#39069;1000&#19975;&#20197;&#19979;5%&#65292;&#20197;&#19978;4%&#65289;&lt;/label&gt;</p><p>                &lt;/div&gt;</p><p>                &lt;div class=&quot;tier-info&quot; id=&quot;disputeInfo&quot; style=&quot;margin-top: 10px;&quot;&gt;</p><p>                    &#21407;&#34987;&#21578;&#21333;&#26041;&#26377;&#36896;&#20215;&#25110;&#21452;&#26041;&#22343;&#26080;&#36896;&#20215;&#65306;&#25353;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#36153;</p><p>                &lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;button class=&quot;calculate-btn&quot; onclick=&quot;calculate()&quot;&gt;&#35745;&#31639;&#25910;&#36153;&#37329;&#39069;&lt;/button&gt;</p><p>            </p><p>            &lt;div class=&quot;result-card&quot; id=&quot;resultCard&quot;&gt;</p><p>                &lt;div class=&quot;result-title&quot;&gt;&#35745;&#31639;&#32467;&#26524;&lt;/div&gt;</p><p>                &lt;div class=&quot;result-amount&quot; id=&quot;resultAmount&quot;&gt;&yen;0.00&lt;/div&gt;</p><p>                &lt;div class=&quot;result-detail&quot; id=&quot;resultDetail&quot;&gt;&lt;/div&gt;</p><p>            &lt;/div&gt;</p><p>            </p><p>            &lt;div class=&quot;note&quot;&gt;</p><p>                &lt;div class=&quot;note-title&quot;&gt;&#37325;&#35201;&#35828;&#26126;&lt;/div&gt;</p><p>                &lt;p&gt;1. &#20197;&#19978;&#25910;&#36153;&#26631;&#20934;&#20026;&#26368;&#39640;&#25910;&#36153;&#26631;&#20934;&#65292;&#22996;&#25176;&#21452;&#26041;&#21487;&#22312;&#26368;&#39640;&#25910;&#36153;&#26631;&#20934;&#33539;&#22260;&#20869;&#21327;&#21830;&#30830;&#23450;&#20855;&#20307;&#25910;&#36153;&#26631;&#20934;&#12290;&lt;/p&gt;</p><p>                &lt;p&gt;2. &#36896;&#20215;&#21672;&#35810;&#36153;&#19981;&#36275;2000&#20803;&#30340;&#25353;2000&#20803;&#25910;&#21462;&#12290;&lt;/p&gt;</p><p>                &lt;p&gt;3. &#24037;&#31243;&#20027;&#26448;&#26080;&#35770;&#26159;&#21542;&#35745;&#20837;&#24037;&#31243;&#36896;&#20215;&#65292;&#22343;&#24212;&#35745;&#20837;&#21462;&#36153;&#22522;&#25968;&#12290;&#21512;&#21516;&#21253;&#24178;&#20215;&#21152;&#31614;&#35777;&#39033;&#30446;&#65292;&#21253;&#24178;&#20215;&#37096;&#20998;&#24212;&#35745;&#20837;&#21462;&#36153;&#22522;&#25968;&#12290;&lt;/p&gt;</p><p>                &lt;p&gt;4. &#24037;&#31243;&#39044;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;&#12289;&#24037;&#31243;&#32467;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;&#30340;&#25910;&#36153;&#26631;&#20934;&#19981;&#21253;&#25324;&#38050;&#31563;&#21450;&#39044;&#22475;&#20214;&#35745;&#31639;&#65292;&#20961;&#35201;&#27714;&#38050;&#31563;&#21450;&#39044;&#22475;&#20214;&#35745;&#31639;&#30340;&#25353;&#30456;&#23545;&#24212;&#30340;&#25910;&#36153;&#26631;&#20934;&#21478;&#34892;&#25910;&#36153;&#12290;&lt;/p&gt;</p><p>            &lt;/div&gt;</p><p>        &lt;/div&gt;</p><p>    &lt;/div&gt;</p><p><br/></p><p>    &lt;script&gt;</p><p>        // &#25910;&#36153;&#36153;&#29575;&#34920;&#65288;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#65289;</p><p>        const rateTables = {</p><p>            // 1. &#25237;&#36164;&#20272;&#31639;</p><p>            '1': {</p><p>                name: '&#25237;&#36164;&#20272;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;',</p><p>                baseName: '&#20272;&#31639;&#20215;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.013 },</p><p>                    { limit: 500, rate: 0.011 },</p><p>                    { limit: 1000, rate: 0.009 },</p><p>                    { limit: 5000, rate: 0.007 },</p><p>                    { limit: 10000, rate: 0.005 },</p><p>                    { limit: Infinity, rate: 0.004 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 2. &#24037;&#31243;&#27010;&#31639;</p><p>            '2': {</p><p>                name: '&#24037;&#31243;&#27010;&#31639;&#30340;&#32534;&#21046;&#25110;&#23457;&#26680;',</p><p>                baseName: '&#27010;&#31639;&#20215;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.020 },</p><p>                    { limit: 500, rate: 0.018 },</p><p>                    { limit: 1000, rate: 0.016 },</p><p>                    { limit: 5000, rate: 0.013 },</p><p>                    { limit: 10000, rate: 0.012 },</p><p>                    { limit: Infinity, rate: 0.011 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 3.1 &#24037;&#31243;&#37327;&#28165;&#21333;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;</p><p>            '3-1': {</p><p>                name: '&#21333;&#29420;&#32534;&#21046;&#25110;&#23457;&#26680;&#24037;&#31243;&#37327;&#28165;&#21333;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;',</p><p>                baseName: '&#39044;&#31639;&#36896;&#20215;&#65288;&#39044;&#31639;&#20215;&#12289;&#25307;&#26631;&#25511;&#21046;&#20215;&#12289;&#25237;&#26631;&#25253;&#20215;&#65289;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.030 },</p><p>                    { limit: 500, rate: 0.025 },</p><p>                    { limit: 1000, rate: 0.024 },</p><p>                    { limit: 5000, rate: 0.022 },</p><p>                    { limit: 10000, rate: 0.020 },</p><p>                    { limit: Infinity, rate: 0.018 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 3.2 &#39044;&#31639;&#36896;&#20215;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;</p><p>            '3-2': {</p><p>                name: '&#21333;&#29420;&#32534;&#21046;&#25110;&#23457;&#26680;&#39044;&#31639;&#36896;&#20215;&#65288;&#28165;&#21333;&#35745;&#20215;&#27861;&#65289;',</p><p>                baseName: '&#39044;&#31639;&#36896;&#20215;&#65288;&#39044;&#31639;&#20215;&#12289;&#25307;&#26631;&#25511;&#21046;&#20215;&#12289;&#25237;&#26631;&#25253;&#20215;&#65289;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.018 },</p><p>                    { limit: 500, rate: 0.016 },</p><p>                    { limit: 1000, rate: 0.014 },</p><p>                    { limit: 5000, rate: 0.012 },</p><p>                    { limit: 10000, rate: 0.009 },</p><p>                    { limit: Infinity, rate: 0.008 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 3.3 &#39044;&#31639;&#36896;&#20215;&#65288;&#23450;&#39069;&#35745;&#20215;&#27861;&#65289;</p><p>            '3-3': {</p><p>                name: '&#32534;&#21046;&#25110;&#23457;&#26680;&#39044;&#31639;&#36896;&#20215;&#65288;&#23450;&#39069;&#35745;&#20215;&#27861;&#65289;',</p><p>                baseName: '&#39044;&#31639;&#36896;&#20215;&#65288;&#39044;&#31639;&#20215;&#12289;&#25307;&#26631;&#25511;&#21046;&#20215;&#12289;&#25237;&#26631;&#25253;&#20215;&#65289;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.035 },</p><p>                    { limit: 500, rate: 0.030 },</p><p>                    { limit: 1000, rate: 0.028 },</p><p>                    { limit: 5000, rate: 0.027 },</p><p>                    { limit: 10000, rate: 0.024 },</p><p>                    { limit: Infinity, rate: 0.020 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 4. &#24037;&#31243;&#32467;&#31639;&#32534;&#21046;</p><p>            '4': {</p><p>                name: '&#24037;&#31243;&#32467;&#31639;&#30340;&#32534;&#21046;',</p><p>                baseName: '&#32467;&#31639;&#20215;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.045 },</p><p>                    { limit: 500, rate: 0.040 },</p><p>                    { limit: 1000, rate: 0.035 },</p><p>                    { limit: 5000, rate: 0.033 },</p><p>                    { limit: 10000, rate: 0.030 },</p><p>                    { limit: Infinity, rate: 0.025 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 5.1 &#32467;&#31639;&#23457;&#26680;&#22522;&#26412;&#25910;&#36153;</p><p>            '5-1': {</p><p>                name: '&#24037;&#31243;&#32467;&#31639;&#23457;&#26680;&#65288;&#22522;&#26412;&#25910;&#36153;&#65289;',</p><p>                baseName: '&#36865;&#23457;&#32467;&#31639;&#20215;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.028 },</p><p>                    { limit: 500, rate: 0.025 },</p><p>                    { limit: 1000, rate: 0.022 },</p><p>                    { limit: 5000, rate: 0.016 },</p><p>                    { limit: 10000, rate: 0.013 },</p><p>                    { limit: Infinity, rate: 0.010 }</p><p>                ],</p><p>                progressive: true</p><p>            },</p><p>            // 6. &#20840;&#36807;&#31243;&#36896;&#20215;&#25511;&#21046;</p><p>            '6': {</p><p>                name: '&#26045;&#24037;&#38454;&#27573;&#20840;&#36807;&#31243;&#36896;&#20215;&#25511;&#21046;',</p><p>                baseName: '&#27010;&#31639;&#20215;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.120 },</p><p>                    { limit: 500, rate: 0.110 },</p><p>                    { limit: 1000, rate: 0.100 },</p><p>                    { limit: 5000, rate: 0.090 },</p><p>                    { limit: 10000, rate: 0.080 },</p><p>                    { limit: Infinity, rate: 0.070 }</p><p>                ],</p><p>                progressive: true,</p><p>                note: '&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#36153;&#65307;&#19981;&#21253;&#39547;&#22330;&#20154;&#21592;&#30340;&#36153;&#29992;'</p><p>            },</p><p>            // 7.1 &#32416;&#32439;&#37492;&#35777;&#65288;&#21333;&#26041;&#65289;</p><p>            '7-1': {</p><p>                name: '&#24037;&#31243;&#36896;&#20215;&#32416;&#32439;&#37492;&#35777;&#65288;&#21333;&#26041;&#65289;',</p><p>                baseName: '&#37492;&#35777;&#21518;&#26631;&#30340;&#39069;',</p><p>                rates: [</p><p>                    { limit: 100, rate: 0.120 },</p><p>                    { limit: 500, rate: 0.100 },</p><p>                    { limit: 1000, rate: 0.080 },</p><p>                    { limit: 5000, rate: 0.070 },</p><p>                    { limit: 10000, rate: 0.060 },</p><p>                    { limit: Infinity, rate: 0.050 }</p><p>                ],</p><p>                progressive: true,</p><p>                note: '&#21407;&#34987;&#21578;&#21333;&#26041;&#26377;&#36896;&#20215;&#25110;&#21452;&#26041;&#22343;&#26080;&#36896;&#20215;'</p><p>            },</p><p>            // 7.2 &#32416;&#32439;&#37492;&#35777;&#65288;&#21452;&#26041;&#26377;&#36896;&#20215;&#65289;</p><p>            '7-2': {</p><p>                name: '&#24037;&#31243;&#36896;&#20215;&#32416;&#32439;&#37492;&#35777;&#65288;&#21452;&#26041;&#26377;&#36896;&#20215;&#65289;',</p><p>                baseName: '&#20105;&#35758;&#24046;&#39069;',</p><p>                rates: [],</p><p>                progressive: false,</p><p>                fixedRate: 0.05, // 1000&#19975;&#20197;&#19979;5%&#65292;&#20197;&#19978;4%</p><p>                threshold: 1000,</p><p>                highRate: 0.04,</p><p>                note: '&#20105;&#35758;&#24046;&#39069;&#22312;1000&#19975;&#20197;&#19979;&#65288;&#21547;1000&#19975;&#65289;&#25353;5%&#25910;&#21462;&#65292;1000&#19975;&#20197;&#19978;&#25353;4%&#25910;&#21462;'</p><p>            }</p><p>        };</p><p>        </p><p>        // &#24555;&#36895;&#36873;&#25321;</p><p>        function quickSelect(type) {</p><p>            document.querySelectorAll('.tab').forEach(tab =&gt; tab.classList.remove('active'));</p><p>            event.target.classList.add('active');</p><p>            </p><p>            const map = {</p><p>                'estimate': '1',</p><p>                'budget': '2',</p><p>                'settlement': '4',</p><p>                'audit': '5-1',</p><p>                'control': '6'</p><p>            };</p><p>            </p><p>            document.getElementById('projectType').value = map[type];</p><p>            handleProjectChange();</p><p>        }</p><p>        </p><p>        // &#22788;&#29702;&#39033;&#30446;&#31867;&#22411;&#21464;&#26356;</p><p>        function handleProjectChange() {</p><p>            const type = document.getElementById('projectType').value;</p><p>            </p><p>            // &#38544;&#34255;&#25152;&#26377;&#29305;&#27530;&#36755;&#20837;</p><p>            document.getElementById('baseAmountGroup').style.display = 'block';</p><p>            document.getElementById('auditInputs').classList.remove('show');</p><p>            document.getElementById('steelInputs').classList.remove('show');</p><p>            document.getElementById('manDayInputs').classList.remove('show');</p><p>            document.getElementById('disputeInputs').classList.remove('show');</p><p>            </p><p>            // &#26356;&#26032;&#26631;&#31614;</p><p>            const config = rateTables[type];</p><p>            if (config) {</p><p>                document.getElementById('baseUnit').textContent = type === '8' ? '&#21544;' : '&#19975;&#20803;';</p><p>                document.getElementById('tierInfo').textContent = generateTierInfo(config);</p><p>            }</p><p>            </p><p>            // &#29305;&#27530;&#22788;&#29702;</p><p>            if (type === '5-1' || type === '5-2') {</p><p>                document.getElementById('auditInputs').classList.add('show');</p><p>            } else if (type === '8') {</p><p>                document.getElementById('baseAmountGroup').style.display = 'none';</p><p>                document.getElementById('steelInputs').classList.add('show');</p><p>            } else if (type === '9') {</p><p>                document.getElementById('baseAmountGroup').style.display = 'none';</p><p>                document.getElementById('manDayInputs').classList.add('show');</p><p>            } else if (type.startsWith('7')) {</p><p>                document.getElementById('disputeInputs').classList.add('show');</p><p>                if (type === '7-2') {</p><p>                    document.getElementById('bothParties').checked = true;</p><p>                    updateDisputeRate();</p><p>                }</p><p>            }</p><p>            </p><p>            // &#38544;&#34255;&#32467;&#26524;</p><p>            document.getElementById('resultCard').classList.remove('show');</p><p>        }</p><p>        </p><p>        // &#29983;&#25104;&#36153;&#29575;&#21306;&#38388;&#35828;&#26126;</p><p>        function generateTierInfo(config) {</p><p>            if (!config.progressive) return config.note || '';</p><p>            </p><p>            const tiers = [</p><p>                '100&#19975;&#20803;&#20197;&#20869;&#65306;' + (config.rates[0].rate * 1000).toFixed(1) + '&permil;',</p><p>                '101-500&#19975;&#20803;&#65306;' + (config.rates[1].rate * 1000).toFixed(1) + '&permil;',</p><p>                '501-1000&#19975;&#20803;&#65306;' + (config.rates[2].rate * 1000).toFixed(1) + '&permil;',</p><p>                '1001-5000&#19975;&#20803;&#65306;' + (config.rates[3].rate * 1000).toFixed(1) + '&permil;',</p><p>                '5001&#19975;&#20803;-1&#20159;&#20803;&#65306;' + (config.rates[4].rate * 1000).toFixed(1) + '&permil;',</p><p>                '1&#20159;&#20803;&#20197;&#19978;&#65306;' + (config.rates[5].rate * 1000).toFixed(1) + '&permil;'</p><p>            ];</p><p>            return '&#36153;&#29575;&#21306;&#38388;&#65306;' + tiers.join(' | ');</p><p>        }</p><p>        </p><p>        // &#26356;&#26032;&#32416;&#32439;&#37492;&#35777;&#36153;&#29575;&#26174;&#31034;</p><p>        function updateDisputeRate() {</p><p>            const bothParties = document.getElementById('bothParties').checked;</p><p>            const type = document.getElementById('projectType').value;</p><p>            </p><p>            if (bothParties) {</p><p>                document.getElementById('projectType').value = '7-2';</p><p>                document.getElementById('disputeInfo').textContent = '&#21452;&#26041;&#22343;&#26377;&#36896;&#20215;&#65306;&#20105;&#35758;&#24046;&#39069;&#22312;1000&#19975;&#20197;&#19979;&#65288;&#21547;1000&#19975;&#65289;&#25353;5%&#25910;&#21462;&#65292;1000&#19975;&#20197;&#19978;&#25353;4%&#25910;&#21462;';</p><p>            } else {</p><p>                document.getElementById('projectType').value = '7-1';</p><p>                document.getElementById('disputeInfo').textContent = '&#21407;&#34987;&#21578;&#21333;&#26041;&#26377;&#36896;&#20215;&#25110;&#21452;&#26041;&#22343;&#26080;&#36896;&#20215;&#65306;&#25353;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#36153;&#65288;12&permil;-5&permil;&#65289;';</p><p>            }</p><p>            </p><p>            const config = rateTables[document.getElementById('projectType').value];</p><p>            document.getElementById('tierInfo').textContent = generateTierInfo(config);</p><p>        }</p><p>        </p><p>        // &#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#31639;</p><p>        function calculateProgressive(amount, rates) {</p><p>            let fee = 0;</p><p>            let remaining = amount;</p><p>            let prevLimit = 0;</p><p>            </p><p>            for (let tier of rates) {</p><p>                const tierAmount = Math.min(remaining, tier.limit - prevLimit);</p><p>                if (tierAmount &lt;= 0) break;</p><p>                </p><p>                fee += tierAmount * tier.rate;</p><p>                remaining -= tierAmount;</p><p>                prevLimit = tier.limit;</p><p>                </p><p>                if (remaining &lt;= 0) break;</p><p>            }</p><p>            </p><p>            return fee;</p><p>        }</p><p>        </p><p>        // &#20027;&#35745;&#31639;&#20989;&#25968;</p><p>        function calculate() {</p><p>            const type = document.getElementById('projectType').value;</p><p>            let fee = 0;</p><p>            let detail = '';</p><p>            let baseAmount = 0;</p><p>            </p><p>            // &#24037;&#26085;&#25910;&#36153;&#29305;&#27530;&#35745;&#31639;</p><p>            if (type === '9') {</p><p>                const senior = parseFloat(document.getElementById('seniorHours').value) || 0;</p><p>                const certified = parseFloat(document.getElementById('certifiedHours').value) || 0;</p><p>                const intermediate = parseFloat(document.getElementById('intermediateHours').value) || 0;</p><p>                const junior = parseFloat(document.getElementById('juniorHours').value) || 0;</p><p>                </p><p>                const seniorFee = senior * 190;</p><p>                const certifiedFee = certified * 150;</p><p>                const intermediateFee = intermediate * 100;</p><p>                const juniorFee = junior * 60;</p><p>                </p><p>                fee = seniorFee + certifiedFee + intermediateFee + juniorFee;</p><p>                </p><p>                detail = `</p><p>                    &lt;p&gt;&lt;strong&gt;&#35745;&#36153;&#26126;&#32454;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                    &lt;p&gt;&#39640;&#32423;&#24037;&#31243;&#24072;&#27880;&#20876;&#36896;&#20215;&#24072;&#65306;${senior}&#23567;&#26102; &times; 190&#20803; = ${seniorFee.toFixed(2)}&#20803;&lt;/p&gt;</p><p>                    &lt;p&gt;&#27880;&#20876;&#36896;&#20215;&#24072;/&#39640;&#32423;&#32844;&#31216;&#65306;${certified}&#23567;&#26102; &times; 150&#20803; = ${certifiedFee.toFixed(2)}&#20803;&lt;/p&gt;</p><p>                    &lt;p&gt;&#20013;&#32423;&#36164;&#26684;&#19987;&#19994;&#20154;&#21592;&#65306;${intermediate}&#23567;&#26102; &times; 100&#20803; = ${intermediateFee.toFixed(2)}&#20803;&lt;/p&gt;</p><p>                    &lt;p&gt;&#21021;&#32423;&#36164;&#26684;&#19987;&#19994;&#20154;&#21592;&#65306;${junior}&#23567;&#26102; &times; 60&#20803; = ${juniorFee.toFixed(2)}&#20803;&lt;/p&gt;</p><p>                    &lt;p&gt;&lt;strong&gt;&#21512;&#35745;&#65306;${fee.toFixed(2)}&#20803;&lt;/strong&gt;&lt;/p&gt;</p><p>                `;</p><p>                </p><p>                // &#24037;&#26085;&#25910;&#36153;&#19981;&#36275;2000&#20803;&#25353;2000&#20803;&#25910;&#21462;</p><p>                if (fee &gt; 0 &amp;&amp; fee &lt; 2000) {</p><p>                    detail += `&lt;p style=&quot;color:#f57c00;&quot;&gt;&#27880;&#65306;&#25353;&#26368;&#20302;&#25910;&#36153;&#26631;&#20934;&#35843;&#25972;&#20026;2000&#20803;&lt;/p&gt;`;</p><p>                    fee = 2000;</p><p>                }</p><p>                </p><p>                showResult(fee, detail);</p><p>                return;</p><p>            }</p><p>            </p><p>            // &#38050;&#31563;&#35745;&#31639;&#29305;&#27530;&#22788;&#29702;</p><p>            if (type === '8') {</p><p>                const tons = parseFloat(document.getElementById('steelAmount').value) || 0;</p><p>                fee = tons * 12; // 12&#20803;/&#21544;</p><p>                </p><p>                detail = `</p><p>                    &lt;p&gt;&lt;strong&gt;&#35745;&#36153;&#26126;&#32454;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                    &lt;p&gt;&#38050;&#31563;&#20351;&#29992;&#37327;&#65306;${tons}&#21544;&lt;/p&gt;</p><p>                    &lt;p&gt;&#25910;&#36153;&#26631;&#20934;&#65306;12&#20803;/&#21544;&lt;/p&gt;</p><p>                    &lt;p&gt;&#35745;&#31639;&#65306;${tons} &times; 12 = ${fee.toFixed(2)}&#20803;&lt;/p&gt;</p><p>                `;</p><p>                </p><p>                if (fee &gt; 0 &amp;&amp; fee &lt; 2000) {</p><p>                    detail += `&lt;p style=&quot;color:#f57c00;&quot;&gt;&#27880;&#65306;&#25353;&#26368;&#20302;&#25910;&#36153;&#26631;&#20934;&#35843;&#25972;&#20026;2000&#20803;&lt;/p&gt;`;</p><p>                    fee = 2000;</p><p>                }</p><p>                </p><p>                showResult(fee, detail);</p><p>                return;</p><p>            }</p><p>            </p><p>            // &#32467;&#31639;&#23457;&#26680;&#29305;&#27530;&#22788;&#29702;</p><p>            if (type === '5-1' || type === '5-2') {</p><p>                const auditAmount = parseFloat(document.getElementById('auditAmount').value) || 0;</p><p>                const reduceAmount = parseFloat(document.getElementById('reduceAmount').value) || 0;</p><p>                const increaseAmount = parseFloat(document.getElementById('increaseAmount').value) || 0;</p><p>                </p><p>                if (auditAmount &lt;= 0) {</p><p>                    alert('&#35831;&#36755;&#20837;&#36865;&#23457;&#32467;&#31639;&#20215;');</p><p>                    return;</p><p>                }</p><p>                </p><p>                // &#22522;&#26412;&#25910;&#36153;</p><p>                const config = rateTables['5-1'];</p><p>                const basicFee = calculateProgressive(auditAmount, config.rates);</p><p>                </p><p>                // &#25928;&#30410;&#25910;&#36153;</p><p>                const benefitBase = reduceAmount + increaseAmount;</p><p>                const benefitFee = benefitBase * 0.05; // 5%</p><p>                </p><p>                if (type === '5-1') {</p><p>                    fee = basicFee;</p><p>                    detail = `</p><p>                        &lt;p&gt;&lt;strong&gt;&#22522;&#26412;&#25910;&#36153;&#35745;&#31639;&#65288;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#65289;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                        &lt;p&gt;&#36865;&#23457;&#32467;&#31639;&#20215;&#65306;${auditAmount}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&#35745;&#31639;&#36807;&#31243;&#65306;${generateProgressiveDetail(auditAmount, config.rates)}&lt;/p&gt;</p><p>                        &lt;p&gt;&#22522;&#26412;&#25910;&#36153;&#65306;${basicFee.toFixed(2)}&#19975;&#20803; = ${(basicFee * 10000).toFixed(2)}&#20803;&lt;/p&gt;</p><p>                    `;</p><p>                    baseAmount = auditAmount;</p><p>                } else {</p><p>                    fee = basicFee + benefitFee;</p><p>                    detail = `</p><p>                        &lt;p&gt;&lt;strong&gt;&#24635;&#25910;&#36153; = &#22522;&#26412;&#25910;&#36153; + &#25928;&#30410;&#25910;&#36153;&lt;/strong&gt;&lt;/p&gt;</p><p>                        &lt;p&gt;&lt;strong&gt;&#22522;&#26412;&#25910;&#36153;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                        &lt;p&gt;&#36865;&#23457;&#32467;&#31639;&#20215;&#65306;${auditAmount}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&#35745;&#31639;&#36807;&#31243;&#65306;${generateProgressiveDetail(auditAmount, config.rates)}&lt;/p&gt;</p><p>                        &lt;p&gt;&#22522;&#26412;&#25910;&#36153;&#65306;${basicFee.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&lt;strong&gt;&#25928;&#30410;&#25910;&#36153;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                        &lt;p&gt;&#26680;&#20943;&#39069;&#65306;${reduceAmount}&#19975;&#20803; | &#26680;&#22686;&#39069;&#65306;${increaseAmount}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&#25928;&#30410;&#25910;&#36153;&#22522;&#25968;&#65306;${benefitBase}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&#36153;&#29575;&#65306;5%&lt;/p&gt;</p><p>                        &lt;p&gt;&#25928;&#30410;&#25910;&#36153;&#65306;${benefitFee.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&lt;strong&gt;&#21512;&#35745;&#65306;${fee.toFixed(2)}&#19975;&#20803; = ${(fee * 10000).toFixed(2)}&#20803;&lt;/strong&gt;&lt;/p&gt;</p><p>                    `;</p><p>                    baseAmount = auditAmount;</p><p>                }</p><p>                </p><p>                // &#36716;&#25442;&#20803;&#24182;&#26816;&#26597;&#26368;&#20302;&#25910;&#36153;</p><p>                fee = fee * 10000;</p><p>                if (fee &lt; 2000 &amp;&amp; fee &gt; 0) {</p><p>                    detail += `&lt;p style=&quot;color:#f57c00;&quot;&gt;&#27880;&#65306;&#25353;&#26368;&#20302;&#25910;&#36153;&#26631;&#20934;&#35843;&#25972;&#20026;2000&#20803;&lt;/p&gt;`;</p><p>                    fee = 2000;</p><p>                }</p><p>                </p><p>                showResult(fee, detail);</p><p>                return;</p><p>            }</p><p>            </p><p>            // &#26222;&#36890;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#31639;</p><p>            baseAmount = parseFloat(document.getElementById('baseAmount').value) || 0;</p><p>            if (baseAmount &lt;= 0) {</p><p>                alert('&#35831;&#36755;&#20837;&#26377;&#25928;&#30340;&#25910;&#36153;&#22522;&#25968;');</p><p>                return;</p><p>            }</p><p>            </p><p>            const config = rateTables[type];</p><p>            if (!config) {</p><p>                alert('&#35831;&#36873;&#25321;&#26377;&#25928;&#30340;&#21672;&#35810;&#39033;&#30446;&#31867;&#22411;');</p><p>                return;</p><p>            }</p><p>            </p><p>            // &#32416;&#32439;&#37492;&#35777;&#29305;&#27530;&#22788;&#29702;&#65288;&#21452;&#26041;&#26377;&#36896;&#20215;&#65289;</p><p>            if (type === '7-2') {</p><p>                const threshold = 1000;</p><p>                if (baseAmount &lt;= threshold) {</p><p>                    fee = baseAmount * 0.05;</p><p>                    detail = `</p><p>                        &lt;p&gt;&lt;strong&gt;&#35745;&#36153;&#26041;&#24335;&#65306;&lt;/strong&gt;&#21452;&#26041;&#22343;&#26377;&#36896;&#20215;&lt;/p&gt;</p><p>                        &lt;p&gt;&#20105;&#35758;&#24046;&#39069;&#65306;${baseAmount}&#19975;&#20803;&#65288;1000&#19975;&#20803;&#20197;&#20869;&#65289;&lt;/p&gt;</p><p>                        &lt;p&gt;&#36153;&#29575;&#65306;5%&lt;/p&gt;</p><p>                        &lt;p&gt;&#35745;&#31639;&#65306;${baseAmount} &times; 5% = ${fee.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                    `;</p><p>                } else {</p><p>                    const lowPart = threshold * 0.05;</p><p>                    const highPart = (baseAmount - threshold) * 0.04;</p><p>                    fee = lowPart + highPart;</p><p>                    detail = `</p><p>                        &lt;p&gt;&lt;strong&gt;&#35745;&#36153;&#26041;&#24335;&#65306;&lt;/strong&gt;&#21452;&#26041;&#22343;&#26377;&#36896;&#20215;&lt;/p&gt;</p><p>                        &lt;p&gt;&#20105;&#35758;&#24046;&#39069;&#65306;${baseAmount}&#19975;&#20803;&#65288;&#36229;&#36807;1000&#19975;&#20803;&#65289;&lt;/p&gt;</p><p>                        &lt;p&gt;1000&#19975;&#20803;&#20197;&#20869;&#37096;&#20998;&#65306;1000 &times; 5% = ${lowPart.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;1000&#19975;&#20803;&#20197;&#19978;&#37096;&#20998;&#65306;${(baseAmount - 1000).toFixed(2)} &times; 4% = ${highPart.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                        &lt;p&gt;&#21512;&#35745;&#65306;${fee.toFixed(2)}&#19975;&#20803;&lt;/p&gt;</p><p>                    `;</p><p>                }</p><p>            } else {</p><p>                // &#26631;&#20934;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;</p><p>                fee = calculateProgressive(baseAmount, config.rates);</p><p>                detail = `</p><p>                    &lt;p&gt;&lt;strong&gt;&#25910;&#36153;&#22522;&#25968;&#65306;&lt;/strong&gt;${baseAmount}&#19975;&#20803;&#65288;${config.baseName}&#65289;&lt;/p&gt;</p><p>                    &lt;p&gt;&lt;strong&gt;&#24046;&#39069;&#23450;&#29575;&#32047;&#36827;&#35745;&#31639;&#65306;&lt;/strong&gt;&lt;/p&gt;</p><p>                    &lt;p&gt;${generateProgressiveDetail(baseAmount, config.rates)}&lt;/p&gt;</p><p>                    &lt;p&gt;&#21512;&#35745;&#65306;${fee.toFixed(4)}&#19975;&#20803;&lt;/p&gt;</p><p>                `;</p><p>                </p><p>                if (config.note) {</p><p>                    detail += `&lt;p style=&quot;color:#1976d2;margin-top:8px;&quot;&gt;&#22791;&#27880;&#65306;${config.note}&lt;/p&gt;`;</p><p>                }</p><p>            }</p><p>            </p><p>            // &#36716;&#25442;&#20803;&#24182;&#26816;&#26597;&#26368;&#20302;&#25910;&#36153;</p><p>            fee = fee * 10000;</p><p>            if (fee &lt; 2000 &amp;&amp; fee &gt; 0) {</p><p>                detail += `&lt;p style=&quot;color:#f57c00;&quot;&gt;&#27880;&#65306;&#25353;&#26368;&#20302;&#25910;&#36153;&#26631;&#20934;&#35843;&#25972;&#20026;2000&#20803;&lt;/p&gt;`;</p><p>                fee = 2000;</p><p>            }</p><p>            </p><p>            showResult(fee, detail);</p><p>        }</p><p>        </p><p>        // &#29983;&#25104;&#32047;&#36827;&#35745;&#31639;&#26126;&#32454;</p><p>        function generateProgressiveDetail(amount, rates) {</p><p>            let detail = [];</p><p>            let remaining = amount;</p><p>            let prevLimit = 0;</p><p>            </p><p>            for (let tier of rates) {</p><p>                const tierAmount = Math.min(remaining, tier.limit - prevLimit);</p><p>                if (tierAmount &lt;= 0) break;</p><p>                </p><p>                const tierFee = tierAmount * tier.rate;</p><p>                const rateDisplay = (tier.rate * 1000).toFixed(1);</p><p>                </p><p>                if (tier.limit === Infinity) {</p><p>                    detail.push(`${tierAmount.toFixed(2)}&#19975;&#20803; &times; ${rateDisplay}&permil; = ${tierFee.toFixed(4)}&#19975;&#20803;`);</p><p>                } else {</p><p>                    detail.push(`${tierAmount.toFixed(2)}&#19975;&#20803; &times; ${rateDisplay}&permil; = ${tierFee.toFixed(4)}&#19975;&#20803;`);</p><p>                }</p><p>                </p><p>                remaining -= tierAmount;</p><p>                prevLimit = tier.limit;</p><p>                if (remaining &lt;= 0) break;</p><p>            }</p><p>            </p><p>            return detail.join('&lt;br&gt;');</p><p>        }</p><p>        </p><p>        // &#26174;&#31034;&#32467;&#26524;</p><p>        function showResult(fee, detailHtml) {</p><p>            document.getElementById('resultAmount').textContent = '&yen;' + fee.toLocaleString('zh-CN', {</p><p>                minimumFractionDigits: 2,</p><p>                maximumFractionDigits: 2</p><p>            });</p><p>            document.getElementById('resultDetail').innerHTML = detailHtml;</p><p>            document.getElementById('resultCard').classList.add('show');</p><p>            </p><p>            // &#28378;&#21160;&#21040;&#32467;&#26524;&#21306;&#22495;</p><p>            document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });</p><p>        }</p><p>        </p><p>        // &#21021;&#22987;&#21270;</p><p>        handleProjectChange();</p><p>    &lt;/script&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>广东省建设工程造价咨询收费计算器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .input-group input {
+            flex: 1;
+        }
+        
+        .unit {
+            color: #666;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            border-left: 4px solid #667eea;
+            display: none;
+        }
+        
+        .result-card.show {
+            display: block;
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result-title {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .result-amount {
+            font-size: 2.2rem;
+            color: #1e3c72;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .result-detail {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .result-detail p {
+            margin-bottom: 8px;
+        }
+        
+        .result-detail strong {
+            color: #333;
+        }
+        
+        .note {
+            margin-top: 20px;
+            padding: 16px;
+            background: #fff8e1;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .note-title {
+            font-weight: 600;
+            color: #f57c00;
+            margin-bottom: 8px;
+        }
+        
+        /* 特殊输入区域样式 */
+        .special-inputs {
+            display: none;
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+        
+        .special-inputs.show {
+            display: block;
+        }
+        
+        .tier-info {
+            background: #e3f2fd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: #1976d2;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+        
+        .tab {
+            padding: 10px 16px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .professionals-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .prof-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+        }
+        
+        .prof-item label {
+            font-size: 0.8rem;
+            margin-bottom: 6px;
+        }
+        
+        .prof-item input {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>广东省建设工程造价咨询收费计算器</h1>
+            <p>依据粤价函〔2011〕742号文件</p>
+        </div>
+        
+        <div class="content">
+            <!-- 快速选择标签 -->
+            <div class="tabs">
+                <button class="tab active" onclick="quickSelect('estimate')">投资估算</button>
+                <button class="tab" onclick="quickSelect('budget')">工程概算</button>
+                <button class="tab" onclick="quickSelect('settlement')">工程结算</button>
+                <button class="tab" onclick="quickSelect('audit')">结算审核</button>
+                <button class="tab" onclick="quickSelect('control')">全过程</button>
+            </div>
+            
+            <div class="form-group">
+                <label>咨询项目名称</label>
+                <select id="projectType" onchange="handleProjectChange()">
+                    <option value="1">1. 投资估算的编制或审核</option>
+                    <option value="2">2. 工程概算的编制或审核</option>
+                    <option value="3-1">3.1 单独编制或审核工程量清单（清单计价法）</option>
+                    <option value="3-2">3.2 单独编制或审核预算造价（清单计价法）</option>
+                    <option value="3-3">3.3 编制或审核预算造价（定额计价法）</option>
+                    <option value="4">4. 工程结算的编制</option>
+                    <option value="5-1">5.1 工程结算审核（基本收费）</option>
+                    <option value="5-2">5.2 工程结算审核（效益收费）</option>
+                    <option value="6">6. 施工阶段全过程造价控制</option>
+                    <option value="7-1">7.1 工程造价纠纷鉴证（鉴证后标的额）</option>
+                    <option value="7-2">7.2 工程造价纠纷鉴证（争议差额）</option>
+                    <option value="8">8. 钢筋及预埋件计算</option>
+                    <option value="9">9. 工程造价咨询工日收费标准</option>
+                </select>
+            </div>
+            
+            <!-- 普通收费基数输入 -->
+            <div class="form-group" id="baseAmountGroup">
+                <label>收费基数</label>
+                <div class="input-group">
+                    <input type="number" id="baseAmount" placeholder="请输入金额" step="0.01">
+                    <span class="unit" id="baseUnit">万元</span>
+                </div>
+                <div class="tier-info" id="tierInfo"></div>
+            </div>
+            
+            <!-- 结算审核特殊输入 -->
+            <div class="special-inputs" id="auditInputs">
+                <div class="form-group">
+                    <label>送审结算价</label>
+                    <div class="input-group">
+                        <input type="number" id="auditAmount" placeholder="请输入送审金额" step="0.01">
+                        <span class="unit">万元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>核减额（绝对值）</label>
+                    <div class="input-group">
+                        <input type="number" id="reduceAmount" placeholder="请输入核减金额" step="0.01">
+                        <span class="unit">万元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>核增额（绝对值，如有）</label>
+                    <div class="input-group">
+                        <input type="number" id="increaseAmount" placeholder="请输入核增金额" step="0.01" value="0">
+                        <span class="unit">万元</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 钢筋计算特殊输入 -->
+            <div class="special-inputs" id="steelInputs">
+                <div class="form-group">
+                    <label>钢筋使用量</label>
+                    <div class="input-group">
+                        <input type="number" id="steelAmount" placeholder="请输入钢筋吨数" step="0.01">
+                        <span class="unit">吨</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 工日收费特殊输入 -->
+            <div class="special-inputs" id="manDayInputs">
+                <div class="form-group">
+                    <label>专业人员配置</label>
+                    <div class="professionals-group">
+                        <div class="prof-item">
+                            <label>高级工程师注册造价师（190元/小时）</label>
+                            <input type="number" id="seniorHours" placeholder="小时数" step="0.5" value="0">
+                        </div>
+                        <div class="prof-item">
+                            <label>注册造价师/高级职称（150元/小时）</label>
+                            <input type="number" id="certifiedHours" placeholder="小时数" step="0.5" value="0">
+                        </div>
+                        <div class="prof-item">
+                            <label>中级资格专业人员（100元/小时）</label>
+                            <input type="number" id="intermediateHours" placeholder="小时数" step="0.5" value="0">
+                        </div>
+                        <div class="prof-item">
+                            <label>初级资格专业人员（60元/小时）</label>
+                            <input type="number" id="juniorHours" placeholder="小时数" step="0.5" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 纠纷鉴证特殊选项 -->
+            <div class="special-inputs" id="disputeInputs">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="bothParties" onchange="updateDisputeRate()">
+                    <label for="bothParties" style="margin: 0;">双方均有造价（争议差额1000万以下5%，以上4%）</label>
+                </div>
+                <div class="tier-info" id="disputeInfo" style="margin-top: 10px;">
+                    原被告单方有造价或双方均无造价：按差额定率累进计费
+                </div>
+            </div>
+            
+            <button class="calculate-btn" onclick="calculate()">计算收费金额</button>
+            
+            <div class="result-card" id="resultCard">
+                <div class="result-title">计算结果</div>
+                <div class="result-amount" id="resultAmount">¥0.00</div>
+                <div class="result-detail" id="resultDetail"></div>
+            </div>
+            
+            <div class="note">
+                <div class="note-title">重要说明</div>
+                <p>1. 以上收费标准为最高收费标准，委托双方可在最高收费标准范围内协商确定具体收费标准。</p>
+                <p>2. 造价咨询费不足2000元的按2000元收取。</p>
+                <p>3. 工程主材无论是否计入工程造价，均应计入取费基数。合同包干价加签证项目，包干价部分应计入取费基数。</p>
+                <p>4. 工程预算的编制或审核、工程结算的编制或审核的收费标准不包括钢筋及预埋件计算，凡要求钢筋及预埋件计算的按相对应的收费标准另行收费。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 收费费率表（差额定率累进）
+        const rateTables = {
+            // 1. 投资估算
+            '1': {
+                name: '投资估算的编制或审核',
+                baseName: '估算价',
+                rates: [
+                    { limit: 100, rate: 0.013 },
+                    { limit: 500, rate: 0.011 },
+                    { limit: 1000, rate: 0.009 },
+                    { limit: 5000, rate: 0.007 },
+                    { limit: 10000, rate: 0.005 },
+                    { limit: Infinity, rate: 0.004 }
+                ],
+                progressive: true
+            },
+            // 2. 工程概算
+            '2': {
+                name: '工程概算的编制或审核',
+                baseName: '概算价',
+                rates: [
+                    { limit: 100, rate: 0.020 },
+                    { limit: 500, rate: 0.018 },
+                    { limit: 1000, rate: 0.016 },
+                    { limit: 5000, rate: 0.013 },
+                    { limit: 10000, rate: 0.012 },
+                    { limit: Infinity, rate: 0.011 }
+                ],
+                progressive: true
+            },
+            // 3.1 工程量清单（清单计价法）
+            '3-1': {
+                name: '单独编制或审核工程量清单（清单计价法）',
+                baseName: '预算造价（预算价、招标控制价、投标报价）',
+                rates: [
+                    { limit: 100, rate: 0.030 },
+                    { limit: 500, rate: 0.025 },
+                    { limit: 1000, rate: 0.024 },
+                    { limit: 5000, rate: 0.022 },
+                    { limit: 10000, rate: 0.020 },
+                    { limit: Infinity, rate: 0.018 }
+                ],
+                progressive: true
+            },
+            // 3.2 预算造价（清单计价法）
+            '3-2': {
+                name: '单独编制或审核预算造价（清单计价法）',
+                baseName: '预算造价（预算价、招标控制价、投标报价）',
+                rates: [
+                    { limit: 100, rate: 0.018 },
+                    { limit: 500, rate: 0.016 },
+                    { limit: 1000, rate: 0.014 },
+                    { limit: 5000, rate: 0.012 },
+                    { limit: 10000, rate: 0.009 },
+                    { limit: Infinity, rate: 0.008 }
+                ],
+                progressive: true
+            },
+            // 3.3 预算造价（定额计价法）
+            '3-3': {
+                name: '编制或审核预算造价（定额计价法）',
+                baseName: '预算造价（预算价、招标控制价、投标报价）',
+                rates: [
+                    { limit: 100, rate: 0.035 },
+                    { limit: 500, rate: 0.030 },
+                    { limit: 1000, rate: 0.028 },
+                    { limit: 5000, rate: 0.027 },
+                    { limit: 10000, rate: 0.024 },
+                    { limit: Infinity, rate: 0.020 }
+                ],
+                progressive: true
+            },
+            // 4. 工程结算编制
+            '4': {
+                name: '工程结算的编制',
+                baseName: '结算价',
+                rates: [
+                    { limit: 100, rate: 0.045 },
+                    { limit: 500, rate: 0.040 },
+                    { limit: 1000, rate: 0.035 },
+                    { limit: 5000, rate: 0.033 },
+                    { limit: 10000, rate: 0.030 },
+                    { limit: Infinity, rate: 0.025 }
+                ],
+                progressive: true
+            },
+            // 5.1 结算审核基本收费
+            '5-1': {
+                name: '工程结算审核（基本收费）',
+                baseName: '送审结算价',
+                rates: [
+                    { limit: 100, rate: 0.028 },
+                    { limit: 500, rate: 0.025 },
+                    { limit: 1000, rate: 0.022 },
+                    { limit: 5000, rate: 0.016 },
+                    { limit: 10000, rate: 0.013 },
+                    { limit: Infinity, rate: 0.010 }
+                ],
+                progressive: true
+            },
+            // 6. 全过程造价控制
+            '6': {
+                name: '施工阶段全过程造价控制',
+                baseName: '概算价',
+                rates: [
+                    { limit: 100, rate: 0.120 },
+                    { limit: 500, rate: 0.110 },
+                    { limit: 1000, rate: 0.100 },
+                    { limit: 5000, rate: 0.090 },
+                    { limit: 10000, rate: 0.080 },
+                    { limit: Infinity, rate: 0.070 }
+                ],
+                progressive: true,
+                note: '差额定率累进计费；不包驻场人员的费用'
+            },
+            // 7.1 纠纷鉴证（单方）
+            '7-1': {
+                name: '工程造价纠纷鉴证（单方）',
+                baseName: '鉴证后标的额',
+                rates: [
+                    { limit: 100, rate: 0.120 },
+                    { limit: 500, rate: 0.100 },
+                    { limit: 1000, rate: 0.080 },
+                    { limit: 5000, rate: 0.070 },
+                    { limit: 10000, rate: 0.060 },
+                    { limit: Infinity, rate: 0.050 }
+                ],
+                progressive: true,
+                note: '原被告单方有造价或双方均无造价'
+            },
+            // 7.2 纠纷鉴证（双方有造价）
+            '7-2': {
+                name: '工程造价纠纷鉴证（双方有造价）',
+                baseName: '争议差额',
+                rates: [],
+                progressive: false,
+                fixedRate: 0.05, // 1000万以下5%，以上4%
+                threshold: 1000,
+                highRate: 0.04,
+                note: '争议差额在1000万以下（含1000万）按5%收取，1000万以上按4%收取'
+            }
+        };
+        
+        // 快速选择
+        function quickSelect(type) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const map = {
+                'estimate': '1',
+                'budget': '2',
+                'settlement': '4',
+                'audit': '5-1',
+                'control': '6'
+            };
+            
+            document.getElementById('projectType').value = map[type];
+            handleProjectChange();
+        }
+        
+        // 处理项目类型变更
+        function handleProjectChange() {
+            const type = document.getElementById('projectType').value;
+            
+            // 隐藏所有特殊输入
+            document.getElementById('baseAmountGroup').style.display = 'block';
+            document.getElementById('auditInputs').classList.remove('show');
+            document.getElementById('steelInputs').classList.remove('show');
+            document.getElementById('manDayInputs').classList.remove('show');
+            document.getElementById('disputeInputs').classList.remove('show');
+            
+            // 更新标签
+            const config = rateTables[type];
+            if (config) {
+                document.getElementById('baseUnit').textContent = type === '8' ? '吨' : '万元';
+                document.getElementById('tierInfo').textContent = generateTierInfo(config);
+            }
+            
+            // 特殊处理
+            if (type === '5-1' || type === '5-2') {
+                document.getElementById('auditInputs').classList.add('show');
+            } else if (type === '8') {
+                document.getElementById('baseAmountGroup').style.display = 'none';
+                document.getElementById('steelInputs').classList.add('show');
+            } else if (type === '9') {
+                document.getElementById('baseAmountGroup').style.display = 'none';
+                document.getElementById('manDayInputs').classList.add('show');
+            } else if (type.startsWith('7')) {
+                document.getElementById('disputeInputs').classList.add('show');
+                if (type === '7-2') {
+                    document.getElementById('bothParties').checked = true;
+                    updateDisputeRate();
+                }
+            }
+            
+            // 隐藏结果
+            document.getElementById('resultCard').classList.remove('show');
+        }
+        
+        // 生成费率区间说明
+        function generateTierInfo(config) {
+            if (!config.progressive) return config.note || '';
+            
+            const tiers = [
+                '100万元以内：' + (config.rates[0].rate * 1000).toFixed(1) + '‰',
+                '101-500万元：' + (config.rates[1].rate * 1000).toFixed(1) + '‰',
+                '501-1000万元：' + (config.rates[2].rate * 1000).toFixed(1) + '‰',
+                '1001-5000万元：' + (config.rates[3].rate * 1000).toFixed(1) + '‰',
+                '5001万元-1亿元：' + (config.rates[4].rate * 1000).toFixed(1) + '‰',
+                '1亿元以上：' + (config.rates[5].rate * 1000).toFixed(1) + '‰'
+            ];
+            return '费率区间：' + tiers.join(' | ');
+        }
+        
+        // 更新纠纷鉴证费率显示
+        function updateDisputeRate() {
+            const bothParties = document.getElementById('bothParties').checked;
+            const type = document.getElementById('projectType').value;
+            
+            if (bothParties) {
+                document.getElementById('projectType').value = '7-2';
+                document.getElementById('disputeInfo').textContent = '双方均有造价：争议差额在1000万以下（含1000万）按5%收取，1000万以上按4%收取';
+            } else {
+                document.getElementById('projectType').value = '7-1';
+                document.getElementById('disputeInfo').textContent = '原被告单方有造价或双方均无造价：按差额定率累进计费（12‰-5‰）';
+            }
+            
+            const config = rateTables[document.getElementById('projectType').value];
+            document.getElementById('tierInfo').textContent = generateTierInfo(config);
+        }
+        
+        // 差额定率累进计算
+        function calculateProgressive(amount, rates) {
+            let fee = 0;
+            let remaining = amount;
+            let prevLimit = 0;
+            
+            for (let tier of rates) {
+                const tierAmount = Math.min(remaining, tier.limit - prevLimit);
+                if (tierAmount <= 0) break;
+                
+                fee += tierAmount * tier.rate;
+                remaining -= tierAmount;
+                prevLimit = tier.limit;
+                
+                if (remaining <= 0) break;
+            }
+            
+            return fee;
+        }
+        
+        // 主计算函数
+        function calculate() {
+            const type = document.getElementById('projectType').value;
+            let fee = 0;
+            let detail = '';
+            let baseAmount = 0;
+            
+            // 工日收费特殊计算
+            if (type === '9') {
+                const senior = parseFloat(document.getElementById('seniorHours').value) || 0;
+                const certified = parseFloat(document.getElementById('certifiedHours').value) || 0;
+                const intermediate = parseFloat(document.getElementById('intermediateHours').value) || 0;
+                const junior = parseFloat(document.getElementById('juniorHours').value) || 0;
+                
+                const seniorFee = senior * 190;
+                const certifiedFee = certified * 150;
+                const intermediateFee = intermediate * 100;
+                const juniorFee = junior * 60;
+                
+                fee = seniorFee + certifiedFee + intermediateFee + juniorFee;
+                
+                detail = `
+                    <p><strong>计费明细：</strong></p>
+                    <p>高级工程师注册造价师：${senior}小时 × 190元 = ${seniorFee.toFixed(2)}元</p>
+                    <p>注册造价师/高级职称：${certified}小时 × 150元 = ${certifiedFee.toFixed(2)}元</p>
+                    <p>中级资格专业人员：${intermediate}小时 × 100元 = ${intermediateFee.toFixed(2)}元</p>
+                    <p>初级资格专业人员：${junior}小时 × 60元 = ${juniorFee.toFixed(2)}元</p>
+                    <p><strong>合计：${fee.toFixed(2)}元</strong></p>
+                `;
+                
+                // 工日收费不足2000元按2000元收取
+                if (fee > 0 && fee < 2000) {
+                    detail += `<p style="color:#f57c00;">注：按最低收费标准调整为2000元</p>`;
+                    fee = 2000;
+                }
+                
+                showResult(fee, detail);
+                return;
+            }
+            
+            // 钢筋计算特殊处理
+            if (type === '8') {
+                const tons = parseFloat(document.getElementById('steelAmount').value) || 0;
+                fee = tons * 12; // 12元/吨
+                
+                detail = `
+                    <p><strong>计费明细：</strong></p>
+                    <p>钢筋使用量：${tons}吨</p>
+                    <p>收费标准：12元/吨</p>
+                    <p>计算：${tons} × 12 = ${fee.toFixed(2)}元</p>
+                `;
+                
+                if (fee > 0 && fee < 2000) {
+                    detail += `<p style="color:#f57c00;">注：按最低收费标准调整为2000元</p>`;
+                    fee = 2000;
+                }
+                
+                showResult(fee, detail);
+                return;
+            }
+            
+            // 结算审核特殊处理
+            if (type === '5-1' || type === '5-2') {
+                const auditAmount = parseFloat(document.getElementById('auditAmount').value) || 0;
+                const reduceAmount = parseFloat(document.getElementById('reduceAmount').value) || 0;
+                const increaseAmount = parseFloat(document.getElementById('increaseAmount').value) || 0;
+                
+                if (auditAmount <= 0) {
+                    alert('请输入送审结算价');
+                    return;
+                }
+                
+                // 基本收费
+                const config = rateTables['5-1'];
+                const basicFee = calculateProgressive(auditAmount, config.rates);
+                
+                // 效益收费
+                const benefitBase = reduceAmount + increaseAmount;
+                const benefitFee = benefitBase * 0.05; // 5%
+                
+                if (type === '5-1') {
+                    fee = basicFee;
+                    detail = `
+                        <p><strong>基本收费计算（差额定率累进）：</strong></p>
+                        <p>送审结算价：${auditAmount}万元</p>
+                        <p>计算过程：${generateProgressiveDetail(auditAmount, config.rates)}</p>
+                        <p>基本收费：${basicFee.toFixed(2)}万元 = ${(basicFee * 10000).toFixed(2)}元</p>
+                    `;
+                    baseAmount = auditAmount;
+                } else {
+                    fee = basicFee + benefitFee;
+                    detail = `
+                        <p><strong>总收费 = 基本收费 + 效益收费</strong></p>
+                        <p><strong>基本收费：</strong></p>
+                        <p>送审结算价：${auditAmount}万元</p>
+                        <p>计算过程：${generateProgressiveDetail(auditAmount, config.rates)}</p>
+                        <p>基本收费：${basicFee.toFixed(2)}万元</p>
+                        <p><strong>效益收费：</strong></p>
+                        <p>核减额：${reduceAmount}万元 | 核增额：${increaseAmount}万元</p>
+                        <p>效益收费基数：${benefitBase}万元</p>
+                        <p>费率：5%</p>
+                        <p>效益收费：${benefitFee.toFixed(2)}万元</p>
+                        <p><strong>合计：${fee.toFixed(2)}万元 = ${(fee * 10000).toFixed(2)}元</strong></p>
+                    `;
+                    baseAmount = auditAmount;
+                }
+                
+                // 转换元并检查最低收费
+                fee = fee * 10000;
+                if (fee < 2000 && fee > 0) {
+                    detail += `<p style="color:#f57c00;">注：按最低收费标准调整为2000元</p>`;
+                    fee = 2000;
+                }
+                
+                showResult(fee, detail);
+                return;
+            }
+            
+            // 普通差额定率累进计算
+            baseAmount = parseFloat(document.getElementById('baseAmount').value) || 0;
+            if (baseAmount <= 0) {
+                alert('请输入有效的收费基数');
+                return;
+            }
+            
+            const config = rateTables[type];
+            if (!config) {
+                alert('请选择有效的咨询项目类型');
+                return;
+            }
+            
+            // 纠纷鉴证特殊处理（双方有造价）
+            if (type === '7-2') {
+                const threshold = 1000;
+                if (baseAmount <= threshold) {
+                    fee = baseAmount * 0.05;
+                    detail = `
+                        <p><strong>计费方式：</strong>双方均有造价</p>
+                        <p>争议差额：${baseAmount}万元（1000万元以内）</p>
+                        <p>费率：5%</p>
+                        <p>计算：${baseAmount} × 5% = ${fee.toFixed(2)}万元</p>
+                    `;
+                } else {
+                    const lowPart = threshold * 0.05;
+                    const highPart = (baseAmount - threshold) * 0.04;
+                    fee = lowPart + highPart;
+                    detail = `
+                        <p><strong>计费方式：</strong>双方均有造价</p>
+                        <p>争议差额：${baseAmount}万元（超过1000万元）</p>
+                        <p>1000万元以内部分：1000 × 5% = ${lowPart.toFixed(2)}万元</p>
+                        <p>1000万元以上部分：${(baseAmount - 1000).toFixed(2)} × 4% = ${highPart.toFixed(2)}万元</p>
+                        <p>合计：${fee.toFixed(2)}万元</p>
+                    `;
+                }
+            } else {
+                // 标准差额定率累进
+                fee = calculateProgressive(baseAmount, config.rates);
+                detail = `
+                    <p><strong>收费基数：</strong>${baseAmount}万元（${config.baseName}）</p>
+                    <p><strong>差额定率累进计算：</strong></p>
+                    <p>${generateProgressiveDetail(baseAmount, config.rates)}</p>
+                    <p>合计：${fee.toFixed(4)}万元</p>
+                `;
+                
+                if (config.note) {
+                    detail += `<p style="color:#1976d2;margin-top:8px;">备注：${config.note}</p>`;
+                }
+            }
+            
+            // 转换元并检查最低收费
+            fee = fee * 10000;
+            if (fee < 2000 && fee > 0) {
+                detail += `<p style="color:#f57c00;">注：按最低收费标准调整为2000元</p>`;
+                fee = 2000;
+            }
+            
+            showResult(fee, detail);
+        }
+        
+        // 生成累进计算明细
+        function generateProgressiveDetail(amount, rates) {
+            let detail = [];
+            let remaining = amount;
+            let prevLimit = 0;
+            
+            for (let tier of rates) {
+                const tierAmount = Math.min(remaining, tier.limit - prevLimit);
+                if (tierAmount <= 0) break;
+                
+                const tierFee = tierAmount * tier.rate;
+                const rateDisplay = (tier.rate * 1000).toFixed(1);
+                
+                if (tier.limit === Infinity) {
+                    detail.push(`${tierAmount.toFixed(2)}万元 × ${rateDisplay}‰ = ${tierFee.toFixed(4)}万元`);
+                } else {
+                    detail.push(`${tierAmount.toFixed(2)}万元 × ${rateDisplay}‰ = ${tierFee.toFixed(4)}万元`);
+                }
+                
+                remaining -= tierAmount;
+                prevLimit = tier.limit;
+                if (remaining <= 0) break;
+            }
+            
+            return detail.join('<br>');
+        }
+        
+        // 显示结果
+        function showResult(fee, detailHtml) {
+            document.getElementById('resultAmount').textContent = '¥' + fee.toLocaleString('zh-CN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            document.getElementById('resultDetail').innerHTML = detailHtml;
+            document.getElementById('resultCard').classList.add('show');
+            
+            // 滚动到结果区域
+            document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        // 初始化
+        handleProjectChange();
+    </script>
+</body>
+</html>
